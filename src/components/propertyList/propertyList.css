@@ -1,0 +1,40 @@
+.proListContainer{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+
+.proListItem{
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+}
+
+.proListItem img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.proListTitle{
+    color: black;
+    text-transform: capitalize;
+    height: fit-content;
+    width: 100%;
+}
+
+.proListTitle h1{
+    font-size: 20px;
+}
+
+.proListTitle h2{
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(110, 105, 105);
+}

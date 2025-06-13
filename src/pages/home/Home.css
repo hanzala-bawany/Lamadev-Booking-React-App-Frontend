@@ -1,0 +1,17 @@
+#homePage{
+    width: 100%;
+}
+
+.homeBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+    margin-top: 50px;
+}
+
+.homeTitle{
+    width: 1024px;
+    margin-top: 50px;
+}
+

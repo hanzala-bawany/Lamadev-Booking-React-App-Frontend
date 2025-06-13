@@ -1,0 +1,162 @@
+/* section 3 */
+.hotelConatiner {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+}
+
+/* sub section 1 */
+.sliderContainer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(1, 1, 1, 0.461);
+    padding: 20px;
+    align-items: center;
+}
+
+.closeIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(255, 50, 50);   
+}
+.closeIcon:hover{
+    color: black;
+}
+.closeIcon:hover:active{
+    color: red;
+}
+
+.arrowBtnWraaper{
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 2px 4px;
+}
+.arrowBtnWraaper:hover{
+    background-color: gray;
+}
+.arrowBtnWraaper:active{
+    background-color: black;
+}
+
+.arrowBtn{
+    cursor: pointer;
+    font-size: 28px;    
+}
+
+.sliderImgWrapper{
+    width: 70%;
+    height: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sliderImgWrapper img{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+/*  sub section 2 */
+.hotelImgesConatiner {
+    background-color: azure;
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 5px;
+}
+
+.hotelImgesConatiner .hotelImgeItem {
+    width: 33%;
+    overflow: hidden;
+    height: 250px;
+    cursor: pointer;
+}
+
+.hotelImgesConatiner .hotelImgeItem>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/*   sub section 3 */
+.hotelDetailsContent {
+    border-color: beige;
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 40px;
+    align-items: center;
+}
+
+/*  sub sub section 1 */
+.aboutHotel {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+/*  sub sub section 2 */
+.hotelSubDetails {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    row-gap: 15px;
+    background-color: #dfecff;
+    padding: 15px 15px;
+    border-radius: 8px;
+}
+
+.hotelSubDetailTitle {
+    font-size: 20px;
+}
+
+.hotelSubDetailDescr {
+    font-size: 14px;
+}
+
+.hotelSubDetailPrise {
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.hotelSubDetailPrise>span {
+    font-weight: bold;
+}
+
+
+
+.hotelSubDetailBtn {
+    background-color: #246ce9;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.hotelSubDetailBtn:hover {
+    background-color: white;
+    color: #246ce9;
+    outline: 1px solid;
+}

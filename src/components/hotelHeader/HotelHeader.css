@@ -1,0 +1,56 @@
+.hotelHeader{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* section 1 */
+.hotelHeaderContent{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.hotelHeaderContent .headerHotelName{
+    text-transform: capitalize;
+}
+
+.hotelHeaderContent .hotelLocation{
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    color: rgb(65, 65, 65);
+    font-size: 14px;
+}
+
+.hotelHeaderContent .locationRemarks{
+    color: #246ce9;
+    font-weight: 500;
+}
+
+.hotelHeaderContent .hotelHeaderTaxiOffer{
+    color: rgb(13, 161, 13);font-weight: 500;
+}
+
+
+
+/* section 2 */
+.hotelHeaderBtn{
+    height: fit-content;
+    align-self: flex-start;
+    background-color: #246ce9;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hotelHeaderBtn:hover{
+    background-color: white;
+    color: #246ce9;
+    outline: 1px solid;
+}

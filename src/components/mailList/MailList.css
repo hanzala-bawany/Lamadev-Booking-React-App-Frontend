@@ -1,0 +1,45 @@
+.mail{
+    width: 100%;
+    padding: 40px 20px;
+    background-color: #003b95;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 30px;
+    margin-top: 50px;
+}
+
+.mail #emailHeading{
+    font-size: 32px;
+}
+
+.mail .inputConatiner{
+    display: flex;
+    column-gap: 10px;
+}
+
+.mail .inputConatiner input{
+    padding: 10px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    width: 100vw;
+    max-width: 300px;
+}
+
+.mail .inputConatiner button{
+    padding: 10px 10px;
+    font-size: 16px;
+    background-color: #246ce9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.mail .inputConatiner button:hover{
+    background-color: white;
+    color: #246ce9;
+    cursor: pointer;
+}

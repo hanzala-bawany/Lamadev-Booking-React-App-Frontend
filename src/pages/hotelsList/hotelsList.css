@@ -1,0 +1,104 @@
+#hotelsListPage{
+    width: 100%;
+}
+
+.hotelsListConatiner{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.hotelsList{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+/* section 1 */
+.hotelListSearch{
+    padding: 15px 10px;
+    background-color: #febb02;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    border-radius: 8px;
+    height: fit-content;
+    position: sticky;
+    top: 5px;
+}
+
+.destination>input{
+    padding: 7px 5px;
+    margin-top: 5px;
+    font-size: 15px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+}
+.destination>input:focus{
+    outline: 1.5px solid;
+    border: none;
+}
+
+.checkInDate{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.newDate{
+    padding: 7px 5px;
+    font-size: 15px;
+    background-color: white;
+    position: static;
+    color: rgb(98, 98, 98);
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.optionItems{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    row-gap: 10px;
+}
+.optionItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.optionItem>input{
+    width: 50px;
+    padding: 3px;
+    border-radius: 2px;
+    border: none;
+}
+.optionItem>input:focus{
+    outline: 1px solid;
+}
+
+.seachListBtn{
+    padding: 7px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: #246ce9;
+    color: white;
+}
+.seachListBtn:hover{
+    background-color: white;
+    color:  #246ce9;
+}
+
+
+
+/* section2 */
+.hotelListResult{
+    flex: 3;
+}

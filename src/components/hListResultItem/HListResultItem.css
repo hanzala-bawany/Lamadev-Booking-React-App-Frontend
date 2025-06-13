@@ -1,0 +1,129 @@
+.HListResultItem{
+    width: 100%;
+    border: 1px solid;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+/* section 1 */
+.HLRitemImg{
+    width: 200px;
+    height: 190px;
+}
+
+
+
+/*  section 2 */
+.HLRitemContent{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 5px;
+}
+
+.contentHeading{
+    font-size: 20px;
+    color: #246ce9;;
+}
+
+.contentDistance{
+    color: rgb(65, 65, 65);
+    font-size: 14px;
+}
+
+.contentTexiOffer{
+    background-color: rgb(12, 172, 12);    
+    color: white;
+    padding: 2px 6px;
+    width: fit-content;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.contentRoomProperties{
+    font-weight: bold;
+
+}
+
+.contentRoomDetail{
+    color: rgb(65, 65, 65);
+    font-size: 14px;
+}
+
+.contentRoomCanclel{
+    color: rgb(12, 172, 12);    
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.contentRoomCancelWarning{
+    color: rgb(65, 65, 65);
+    font-size: 14px;
+}
+
+
+/* section 3 */
+.HLRitemPricingAndDetails{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*  subsection 1  */
+.pricingReviewContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pricingReviewContainer .remark{
+    font-size: 18px;
+}
+
+.pricingReviewContainer .pricingReview{
+    padding: 4px 8px;
+    background-color: #003b95;
+    color: white;
+    border-radius: 5px;
+}
+
+/* subsection 2 */
+.priceAndBtnConatiner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 10px;
+    align-items: flex-end;
+}
+
+.priceAndBtnConatiner .roomPrice{
+    font-size: 18px;
+}
+
+.priceAndBtnConatiner .roomTaxesAndFees{
+    color: rgb(65, 65, 65);
+}
+
+.priceAndBtnConatiner .seeAvailabilityBtn{
+    padding: 7px;
+    background-color: #246ce9;
+    color: white;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.priceAndBtnConatiner .seeAvailabilityBtn:hover{
+    background-color: white;
+    color: #246ce9;
+    outline: 1px solid;
+}
