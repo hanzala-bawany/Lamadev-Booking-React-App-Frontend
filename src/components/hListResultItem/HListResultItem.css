@@ -28,7 +28,9 @@
 
 .contentHeading{
     font-size: 20px;
-    color: #246ce9;;
+    font-weight: 700;
+    color: #246ce9;
+    text-transform: capitalize;
 }
 
 .contentDistance{
@@ -54,6 +56,7 @@
 .contentRoomDetail{
     color: rgb(65, 65, 65);
     font-size: 14px;
+    text-transform: capitalize;
 }
 
 .contentRoomCanclel{
@@ -88,7 +91,7 @@
 }
 
 .pricingReviewContainer .pricingReview{
-    padding: 4px 8px;
+    padding: 1px 8px;
     background-color: #003b95;
     color: white;
     border-radius: 5px;
@@ -112,7 +115,7 @@
 }
 
 .priceAndBtnConatiner .seeAvailabilityBtn{
-    padding: 7px;
+    padding: 4px 10px;
     background-color: #246ce9;
     color: white;
     width: 100%;

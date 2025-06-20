@@ -7,9 +7,23 @@ import Footer from '../../components/footer/Footer'
 import { useEffect, useState } from 'react'
 import { faCircleXmark, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useLocation, useParams } from 'react-router-dom'
+import useFetch from '../../hooks/useFetch'
 
 
 const Hotel = () => {
+
+  const {id} = useParams() // 1st method to get id from params/path
+  console.log(id , "hotel id");
+
+  // const location = useLocation()  //  2nd method to get id from path
+  // const id = location.pathname.split("/")[2]
+
+  const { data, loading, error, reFetchData } = useFetch(`http://localhost:8000/hotel/${id}`)
+  const dataByHotelId = data?.data
+  console.log(dataByHotelId);
+  
+
 
   const [hotelImages, setHotelImages] = useState([
     {

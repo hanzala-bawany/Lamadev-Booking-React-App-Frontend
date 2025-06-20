@@ -34,10 +34,10 @@ const PropertyList = () => {
                 propertyListImg.map((item,i) => {
                 return    (
                         <div key={i} className="proListItem">
-                            <img src={item.imgUrl} alt={data?.data?.[i]?.type} />
+                            <img src={item.imgUrl} alt={ data?.data?.[i]?.type } />
                             <div className="proListTitle">
-                                <h1 className='titleName'>{data?.data?.[i]?.type}</h1>
-                                <h2 className='titleProperties'>{data?.data?.[i]?.count} {data?.data?.[i]?.type}</h2>
+                                <h1 className='titleName'>{ `${data?.data?.[i]?.type}s` }</h1>
+                                <h2 className='titleProperties'>{ data?.data?.[i]?.count } { data?.data?.[i]?.count <= 1 ? data?.data?.[i]?.type : `${data?.data?.[i]?.type}s` }</h2>
                             </div>
                         </div>
                     )

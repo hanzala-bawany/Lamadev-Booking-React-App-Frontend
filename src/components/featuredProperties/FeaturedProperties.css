@@ -44,7 +44,7 @@
 
 .ratingBtn{
     all: unset; /* 👈 sab default styles hata deta hai */
-    padding: 3px 5px;
+    padding: 1px 6px;
     border-radius: 5px;
     cursor: pointer;
     border: 1px solid;

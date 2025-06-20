@@ -1,70 +1,42 @@
 import './FeaturedProperties.css'
+import useFetch from '../../hooks/useFetch'
+
 
 const FeaturedProperties = () => {
+
+    const { data, loading, error } = useFetch("http://localhost:8000/hotel?featured=true&limit=4")
+    console.log(data?.data, "data by fetured");
+    console.log(loading);
+
+    const featuredProperties = data?.data
+
     return (
         <div className="fpContainer">
+            {
+                loading ? <div style={{ alignSelf: "center", marginLeft: "50%" }} className="spinner-border" role="status"> </div> :
+                    featuredProperties?.map((item) => {
+                        return (
+                            <div key={item?._id} className="fpItem">
 
-            <div className="fpItem">
+                                <img src={item?.photos?.[0]} alt={item?.name} />
+                                <div className="fptitle">
+                                    <div className='fpName'>{item?.name}</div>
+                                    <div className='fpCity'>{item?.city}</div>
+                                    <p className='fpProperties'>starting from Rs {item?.cheapestPrice}</p>
+                                    {/* { */}
+                                         {/* item?.rating &&  */}
+                                        <div className="rating">
+                                            <button className='ratingBtn'>{item?.rating || "0"}</button>
+                                            <span className="ratingWord">{item?.rating ? "Superb" : "No review yet"}</span>
+                                        </div>
+                                     {/* }  */}
+                                </div>
 
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Samuel_Beckett_Bridge_At_Sunset_Dublin_Ireland_%2897037639%29_%28cropped%29.jpeg" alt="dublin" />
-                <div className="fptitle">
-                    <div className='fpName'>Bawany House</div>
-                    <div className='fpCity'>Karachi</div>
-                    <p className='fpProperties'>starting from $2000</p>
-                    <div className="rating">
-                        <button className='ratingBtn'>9.7</button>
-                        <span className="ratingWord">Superb</span>                        
-                    </div>
-                </div>
-
-            </div>
-
-            <div className="fpItem">
-
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Samuel_Beckett_Bridge_At_Sunset_Dublin_Ireland_%2897037639%29_%28cropped%29.jpeg" alt="dublin" />
-                <div className="fptitle">
-                    <div className='fpName'>Bawany House</div>
-                    <div className='fpCity'>Karachi</div>
-                    <p className='fpProperties'>starting from $2000</p>
-                    <div className="rating">
-                        <button className='ratingBtn'>9.7</button>
-                        <span className="ratingWord">Superb</span>                        
-                    </div>
-                </div>
-
-            </div> 
-
-            <div className="fpItem">
-
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Samuel_Beckett_Bridge_At_Sunset_Dublin_Ireland_%2897037639%29_%28cropped%29.jpeg" alt="dublin" />
-                <div className="fptitle">
-                    <div className='fpName'>Bawany House</div>
-                    <div className='fpCity'>Karachi</div>
-                    <p className='fpProperties'>starting from $2000</p>
-                    <div className="rating">
-                        <button className='ratingBtn'>9.7</button>
-                        <span className="ratingWord">Superb</span>                        
-                    </div>
-                </div>
-
-            </div> 
-
-            <div className="fpItem">
-
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Samuel_Beckett_Bridge_At_Sunset_Dublin_Ireland_%2897037639%29_%28cropped%29.jpeg" alt="dublin" />
-                <div className="fptitle">
-                    <div className='fpName'>Bawany House</div>
-                    <div className='fpCity'>Karachi</div>
-                    <p className='fpProperties'>starting from $2000</p>
-                    <div className="rating">
-                        <button className='ratingBtn'>9.7</button>
-                        <span className="ratingWord">Superb</span>                        
-                    </div>
-                </div>
-
-            </div>             
-
-        </div>
+                            </div>
+                        )
+                    })
+            }
+        </div >
 
     )
 }
