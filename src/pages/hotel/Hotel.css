@@ -105,6 +105,14 @@
     align-items: center;
 }
 
+.hotelDetailsContent .aboutHotelTitle::first-letter{
+    text-transform: uppercase;
+}
+
+.hotelDetailsContent .aboutHotelPara::first-letter{
+    text-transform: uppercase;
+}
+
 /*  sub sub section 1 */
 .aboutHotel {
     flex: 3;
@@ -124,7 +132,7 @@
     border-radius: 8px;
 }
 
-.hotelSubDetailTitle {
+.hotelSubDetailTitle{
     font-size: 20px;
 }
 

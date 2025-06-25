@@ -5,6 +5,8 @@ import HotelsList from "./pages/hotelsList/hotelsList"
 import Hotel from "./pages/hotel/Hotel"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Login from "./pages/login/Login"
+import SignUp from "./pages/signUp/signUp"
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path="/"  element={<Home />}/>
         <Route path="/hotels"  element={<HotelsList />}/>
         <Route path="/hotels/:id"  element={<Hotel />}/>
+        <Route path="/login"  element={<Login />}/>
+        <Route path="/signUp"  element={<SignUp />}/>
         
       </Routes>
 

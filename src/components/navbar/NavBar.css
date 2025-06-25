@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 
-#navBar button {
+#navBar .navBarBtn{
     padding: 6px 8px;
     font-weight: 600;
     border-radius: 8px;
@@ -31,9 +31,29 @@
     border: none;
     outline: none;
     cursor: pointer;
+    background-color: white;
+    text-decoration: none;
 }
 
-#navBar button:hover{
+#navBar .navBarBtn:hover{
     background-color: #246ce9;
-    color: white;
+    color: white !important;
+}
+
+
+/*  registration line */
+
+
+.joinNowLink{
+    background-color:#006ce4;
+    color: white !important;
+    text-decoration: none;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.joinNowLink:hover{
+    color:#006ce4 !important;
+    background-color: white;
 }

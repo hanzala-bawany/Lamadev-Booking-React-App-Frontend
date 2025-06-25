@@ -4,14 +4,36 @@ import Header from '../../components/header/Header'
 import HotelHeader from '../../components/hotelHeader/HotelHeader'
 import MailList from '../../components/mailList/MailList'
 import Footer from '../../components/footer/Footer'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { faCircleXmark, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useLocation, useParams } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
+import { searchContext } from '../../context/contextApi'
 
 
 const Hotel = () => {
+
+  const {date , option} = useContext(searchContext)
+  console.log(date , "date");
+
+  const roomCount = Number(option?.room ?? option?.["room"] ?? 1)
+
+  const milliSecondsPerDay = 1000 * 60 * 60 * 24
+  
+  function daysGiver(startDate , endDate){
+    if (!startDate || !endDate) return 0
+    const milliSecondsOfDays = Math.abs( endDate?.getTime() - startDate?.getTime() )
+    const actualDays = Math.ceil( milliSecondsOfDays / milliSecondsPerDay )
+    return actualDays 
+  } 
+
+  const days = daysGiver(
+    new Date(date?.[0]?.startDate || date?.[0]?.["startDate"]),
+    new Date(date?.[0]?.endDate || date?.[0]?.["endDate"])
+  )
+  
+  
 
   const {id} = useParams() // 1st method to get id from params/path
   console.log(id , "hotel id");
@@ -25,25 +47,6 @@ const Hotel = () => {
   
 
 
-  const [hotelImages, setHotelImages] = useState([
-    {
-      imgUrl: "https://th.bing.com/th/id/R.f6c627f90caae82e5d68c42b33281ac1?rik=43j0nL7M7luyBA&pid=ImgRaw&r=0"
-    },
-    {
-      imgUrl: "https://th.bing.com/th/id/R.b66e17feff05a2649ea5082c661af527?rik=rs2NCpzZAF%2bwcA&pid=ImgRaw&r=0"
-    },
-    {
-      imgUrl: "https://th.bing.com/th/id/OIP.TbGvCKfdlIVXK0haDj2JRgHaHa?rs=1&pid=ImgDetMain"
-    },
-    {
-      imgUrl: "https://th.bing.com/th/id/R.c27c980547e2122c0c64ed1e4b7c9662?rik=5oJrdM21oqhyIA&pid=ImgRaw&r=0"
-    },
-    {
-      imgUrl: "https://thumbs.dreamstime.com/b/interior-hotel-room-brown-colors-cozy-sofa-stands-opposite-small-living-205385641.jpg"
-    }, {
-      imgUrl: "https://th.bing.com/th/id/OIP.7wPq9Wx6tmoYreHi8qj7QAHaEJ?o=7rm=3&rs=1&pid=ImgDetMain"
-    }
-  ])
 
   const [openSlider, setOpenSlider] = useState(false)
   const [selectImgIndex, setSelectImgIndex] = useState(0)
@@ -85,7 +88,7 @@ const Hotel = () => {
               </div>
 
               <div className="sliderImgWrapper">
-                <img src={hotelImages[selectImgIndex].imgUrl} alt="" />
+                <img src={dataByHotelId?.photos?.[selectImgIndex] } alt="" />
               </div>
 
               <div className="rightArraow arrowBtnWraaper">
@@ -94,13 +97,13 @@ const Hotel = () => {
             </div>
         }
 
-        <HotelHeader />
+        <HotelHeader data={dataByHotelId} />
 
         <div className="hotelImgesConatiner">
           {
-            hotelImages.map((item, i) => (
-              <div onClick={() => sliderHandler(i)} key={hotelImages[i].imgUrl} className="hotelImgeItem">
-                <img src={item.imgUrl} alt="hotel room img" />
+            dataByHotelId?.photos?.map((item, i) => (
+              <div onClick={() => sliderHandler(i)} key={dataByHotelId?.photos?.[i]} className="hotelImgeItem">
+                <img src={item?.imgUrl} alt="hotel room img" />
               </div>
             ))
           }
@@ -109,15 +112,15 @@ const Hotel = () => {
         <div className="hotelDetailsContent">
 
           <div className="aboutHotel">
-            <h1 className="aboutHotelTitle">Stay in the heart of krakow</h1>
-            <p className="aboutHotelPara">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur nihil repellendus, quisquam commodi labore nobis hic! Vel illo dicta nobis hic, iure magnam maxime vitae iste rem quia nostrum soluta atque, minus ex voluptates natus nemo id a at sapiente? Ratione dignissimos recusandae odit. Quae dolores officiis vitae iste fuga impedit ullam pariatur? Dolor, illum sit?</p>
+            <h1 className="aboutHotelTitle">{dataByHotelId?.title}</h1>
+            <p className="aboutHotelPara">{ dataByHotelId?.discr }</p>
           </div>
 
           <div className="hotelSubDetails">
-            <h2 className="hotelSubDetailTitle">Perfect for a 9-night stay</h2>
+            <h2 className="hotelSubDetailTitle">Perfect for a {days}-night stay</h2>
             <span className="hotelSubDetailDescr">Located in the real heart of krakow . This property has an axcellent location score of 9.8!</span>
             <h3 className="hotelSubDetailPrise">
-              <span>$945</span> ( 9 night )
+              <span>Rs.{days * Number(dataByHotelId?.cheapestPrice) * roomCount }</span> ( {days} night )
             </h3>
             <button className="hotelSubDetailBtn">Reserve or Book Now!</button>
           </div>

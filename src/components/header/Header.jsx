@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faPlane, faCar, faTaxi, faCalendar, faPerson } from '@fortawesome/free-solid-svg-icons'
 import 'react-date-range/dist/styles.css'; // main style file
@@ -9,10 +9,12 @@ import { format } from 'date-fns';
 // ye total 5 staeps hen date range bane ke lie or in ka neche code
 import "./Header.css"
 import { useNavigate } from 'react-router-dom';
+import { searchContext } from '../../context/contextApi';
 
 
 const Header = ({ type }) => {
 
+  const {dispatch} = useContext(searchContext)
 
   const [destination,setDestination] = useState()
   
@@ -46,9 +48,11 @@ const Header = ({ type }) => {
 
   const nav = useNavigate()
   const searchBarHandler = () =>{
+    dispatch({type : "new_search" , payLoad : {city : destination , date , option} })
+    localStorage.setItem("searchDate" , JSON.stringify(date) )
+    localStorage.setItem("searchOption" , JSON.stringify(option) )
     nav("/hotels",{ state:{destination , option , date} })
   }
-
 
 
   return (
