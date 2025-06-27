@@ -22,6 +22,11 @@
     cursor: pointer;
 }
 
+.user_name{
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
 #navBar .navBarBtn{
     padding: 6px 8px;
     font-weight: 600;

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faPlane, faCar, faTaxi, faCalendar, faPerson } from '@fortawesome/free-solid-svg-icons'
 import 'react-date-range/dist/styles.css'; // main style file
@@ -10,11 +10,13 @@ import { format } from 'date-fns';
 import "./Header.css"
 import { useNavigate } from 'react-router-dom';
 import { searchContext } from '../../context/contextApi';
+import { authContext } from '../../context/authContextApi';
 
 
 const Header = ({ type }) => {
 
   const {dispatch} = useContext(searchContext)
+  const {user} = useContext(authContext)
 
   const [destination,setDestination] = useState()
   
@@ -98,7 +100,7 @@ const Header = ({ type }) => {
             <p className="headerDescr">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore esse explicabo ratione modi, exercitationem illum odio, nam cumque vitae perspiciatis officia reprehenderit corporis cum. Ipsa dolor quis labore.
             </p>
-            <button className="headerBtn">sign in / register</button>
+           { !user && <button className="headerBtn">sign in / register</button>  }
 
           </div>
 

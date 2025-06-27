@@ -1,13 +1,49 @@
 import NavBar from '../../components/navbar/NavBar'
-// import { FaUser, FaLock } from "react-icons/fa";
 import styles from './Login.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { authContext } from '../../context/authContextApi';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+
 
 
 
 const Login = () => {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const { dispatch, loading, error } = useContext(authContext)
+
+  const navigate = useNavigate()
+
+  const loginBtnHandler = async (e) => {
+
+    e.preventDefault()
+    dispatch({ type: "login_start" })
+
+    loading && toast.info('Please wait...');
+
+    try {
+      const res = await axios.post("http://localhost:8000/auth/login", { email, password })
+      dispatch({ type: "login_success", payLoad: res?.data })
+      navigate("/")
+      toast.success('Login Successful!');
+    }
+    catch (err) {
+      dispatch({ type: "login_failure", payLoad: err?.massage })
+      toast.error(err?.massage);
+      console.log(err);
+    }
+  }
+
+
+
+
   return (
     <div className={styles.loginPage}>
 
@@ -19,11 +55,12 @@ const Login = () => {
         <form className={styles.form}>
           {/* Username */}
           <div className={styles.inputGroup}>
-            <FontAwesomeIcon  className={styles.icon} icon={faUser} />
+            <FontAwesomeIcon className={styles.icon} icon={faUser} />
             <input
               type="text"
               placeholder="Username"
               className={styles.input}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -34,6 +71,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               className={styles.input}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
@@ -44,10 +82,14 @@ const Login = () => {
           </div>
 
           {/* Login Button */}
-          <button  className={styles.loginBtn}>Login</button>
+          <button onClick={loginBtnHandler} disabled={loading} className={styles.loginBtn}>Login</button>
 
           {/* Google Signin */}
           <button className={styles.googleBtn}>Sign in with Google</button>
+          {
+            error && <span style={{ color: "red" }}>error here</span>
+          }
+
         </form>
       </div>
     </div>

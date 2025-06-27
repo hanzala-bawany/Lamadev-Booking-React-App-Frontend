@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Login from "./pages/login/Login"
 import SignUp from "./pages/signUp/signUp"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -16,13 +18,26 @@ function App() {
 
       <Routes>
 
-        <Route path="/"  element={<Home />}/>
-        <Route path="/hotels"  element={<HotelsList />}/>
-        <Route path="/hotels/:id"  element={<Hotel />}/>
-        <Route path="/login"  element={<Login />}/>
-        <Route path="/signUp"  element={<SignUp />}/>
-        
+        <Route path="/" element={<Home />} />
+        <Route path="/hotels" element={<HotelsList />} />
+        <Route path="/hotels/:id" element={<Hotel />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
+
       </Routes>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        // theme="colored"
+      />
 
     </BrowserRouter>
   )
