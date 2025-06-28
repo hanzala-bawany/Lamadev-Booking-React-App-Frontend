@@ -1,0 +1,82 @@
+.reserveBtnModal {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.484);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.roomConatiner {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+}
+
+.modalHeading{
+    font-size: large;
+}
+
+
+
+.roomInfoConatiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 50px;
+    margin: 25px 25px;
+}
+
+.roomNumberConatiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 4px;
+    margin-top: 2px;
+}
+
+.rTitle{
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.rDesc::first-letter{
+    text-transform: capitalize;
+}
+.maxPeopleNum{
+    font-weight: 600;
+}
+
+.roomNumber{
+    font-weight: 600;
+}
+.rPrice{
+    font-weight: 600;
+}
+
+
+
+
+
+.roomReserveBtn {
+    background-color: #246ce9;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+
+.roomReserveBtn:hover {
+    background-color: white;
+    color: #246ce9;
+    outline: 1px solid;
+}

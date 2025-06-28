@@ -2,74 +2,80 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useFetch from "../../hooks/useFetch"
 import { useContext, useState } from "react"
-import {searchContext} from "../../context/contextApi.jsx"
+import { searchContext } from "../../context/contextApi.jsx"
+import styles from "./Reserve.module.css"
 
-const Reserve = ({ setOpenReserveSlider , hotelId }) => {
+const Reserve = ({ setOpenReserveSlider, hotelId }) => {
 
-  const [checkedRooms , setCheckedRooms] = useState([])
+  const [checkedRooms, setCheckedRooms] = useState([])
   const { error, data, loading } = useFetch(`http://localhost:8000/hotel/room/${hotelId}`)
 
-  const handleCheck = (e) =>{
+  const handleCheck = (e) => {
     const checked = e.target.checked
     const value = e.target.value
-    setCheckedRooms(checked ? [...checkedRooms , value] : checkedRooms.filter((prevValue) => prevValue !== value)  )
+    setCheckedRooms(checked ? [...checkedRooms, value] : checkedRooms.filter((prevValue) => prevValue !== value))
   }
 
-  const {date} = useContext(searchContext )
+  const { date } = useContext(searchContext)
 
-  const getAllSelectedDates = (start , end) =>{
-    
+  const getAllSelectedDates = (start, end) => {
+
     const startDate = new Date(start)
     const endDate = new Date(end)
     const temDate = new Date(startDate)
 
-    const  dates = []
-    console.log(temDate.getDate() , "temDate");
-    console.log(endDate.getDate() , "end date" );
+    const dates = []
 
-    while(temDate.getTime() <= endDate.getTime()){      
-      dates.push(new Date(temDate))
+    while (temDate.getTime() <= endDate.getTime()) {
+      dates.push(new Date(temDate).getTime())
       temDate.setDate(temDate.getDate() + 1)
     }
     return dates
-    
+
   }
-  console.log(getAllSelectedDates(date[0].startDate || date[0]?.["startDate"] ,date[0].endDate || date[0]?.["endDate"]) , "dates array");
+  const allDates = getAllSelectedDates(date[0].startDate || date[0]?.["startDate"], date[0].endDate || date[0]?.["endDate"])
   // console.log(getAllSelectedDates(date[0].startDate , date[0].endDate) , "dates array");
-   
+
 
   return (
-    <div className="reserveBtnModal">
-      <div className="roomConatiner">
+    <div className={styles.reserveBtnModal}>
 
-        <FontAwesomeIcon onClick={() => setOpenReserveSlider(false)} className='closeIcon' icon={faCircleXmark} />
+      <FontAwesomeIcon onClick={() => setOpenReserveSlider(false)} className='closeIcon' icon={faCircleXmark} />
 
-        <span>Slelect you rooms :</span>
+      <div className={styles.roomConatiner}>
+
+        <span className={styles.modalHeading}>Select you rooms :</span>
         {
           data?.data?.map((rItem) => {
-            return <div key={rItem?._id} className="roomInfoConatiner">
+            return (
+              <div key={rItem?._id} className={styles.roomInfoConatiner}>
 
-              <div className="roomInfo">
-                <div className="rTitle">Room Title : {rItem?.title}</div>
-                <div className="rTitle">Room Description : {rItem?.descr}</div>
-                <div className="rTitle">Max People :
-                  <span className="bold">{rItem?.maxPeople} </span>
-                </div>
-                <div className="rPrice">Room Price {rItem?.price}</div>
-              </div>
-              {
-                rItem?.roomNumbers?.map((rNumberItem) => {
-                  return <div key={rNumberItem?._id} className="roomNumberConatiner">
-                    <label className="roomNumber">{rNumberItem?.number}</label>
-                    <input className="roomCheckBox"  type="checkbox" value={rNumberItem?._id} onChange={handleCheck} />
+                <div className={styles.roomInfo}>
+                  <div className={styles.rTitle}> {rItem?.title} </div>
+                  <div className={styles.rDesc}> {rItem?.descr} </div>
+                  <div className={styles.rMaxPeople} >Max People :
+                    <span className={styles.maxPeopleNum}> {rItem?.maxPeople} </span>
                   </div>
-                })
-              }
-            </div>
+                  <div className={styles.rPrice}>Rs. {rItem?.price}</div>
+                </div>
+                <div className={styles.roomNumbersContainer}>
+                  {
+                    rItem?.roomNumbers?.map((rNumberItem) => {
+                      return (
+                        <div key={rNumberItem?._id} className={styles.roomNumberConatiner}>
+                          <label className={styles.roomNumber}>{rNumberItem?.number}</label>
+                          <input className="roomCheckBox" type="checkbox" value={rNumberItem?._id} onChange={handleCheck} />
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+            )
           })
         }
 
-        <button className="roomReserveBtn">  Reserve Now !  </button>
+        <button className={styles.roomReserveBtn}>  Reserve Now !  </button>
 
       </div>
     </div>
