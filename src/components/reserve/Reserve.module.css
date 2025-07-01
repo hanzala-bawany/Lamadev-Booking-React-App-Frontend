@@ -39,6 +39,10 @@
     margin-top: 2px;
 }
 
+.roomNumberConatiner>input:hover{
+    cursor: pointer;
+}
+
 .rTitle{
     font-weight: bold;
     text-transform: capitalize;

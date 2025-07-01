@@ -9,6 +9,7 @@ import Login from "./pages/login/Login"
 import SignUp from "./pages/signUp/signUp"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AuthRoute from "./route/AuthRoute"
 
 
 function App() {
@@ -21,8 +22,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/hotels" element={<HotelsList />} />
         <Route path="/hotels/:id" element={<Hotel />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signUp" element={<SignUp />} />
+
+        <Route element={<AuthRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signUp" element={<SignUp />} />
+        </Route>
 
       </Routes>
 
@@ -36,7 +40,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        // theme="colored"
+      // theme="colored"
       />
 
     </BrowserRouter>

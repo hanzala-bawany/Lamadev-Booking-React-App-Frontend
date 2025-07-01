@@ -4,8 +4,13 @@ import useFetch from "../../hooks/useFetch"
 import { useContext, useState } from "react"
 import { searchContext } from "../../context/contextApi.jsx"
 import styles from "./Reserve.module.css"
+import { toast } from "react-toastify"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const Reserve = ({ setOpenReserveSlider, hotelId }) => {
+
+  const navigate = useNavigate()
 
   const [checkedRooms, setCheckedRooms] = useState([])
   const { error, data, loading } = useFetch(`http://localhost:8000/hotel/room/${hotelId}`)
@@ -34,7 +39,31 @@ const Reserve = ({ setOpenReserveSlider, hotelId }) => {
 
   }
   const allDates = getAllSelectedDates(date[0].startDate || date[0]?.["startDate"], date[0].endDate || date[0]?.["endDate"])
-  // console.log(getAllSelectedDates(date[0].startDate , date[0].endDate) , "dates array");
+
+  const isRoomAvailable = (roomItem) => {
+    const isAvailable = roomItem.unavailableDates.some((date) => allDates.includes( new Date(date).getTime()) )
+    console.log(isAvailable , "is Availabke room");
+    return !isAvailable
+  }
+
+  const finalReserveBtnHandler = async () => {
+    try {
+      await Promise.all(
+        checkedRooms.map((roomId) => {
+          console.log(allDates , "all dates");
+          const res = axios.patch(`http://localhost:8000/room/availability/${roomId}`, { date: allDates })
+          return res.data
+        })
+      )
+      setOpenReserveSlider(false)
+      navigate("/")
+      toast.success("Rooms reserved successfully")
+    }
+    catch (error) {
+      console.log(error);
+      toast.error("Failed to reserve rooms")
+    }
+  }
 
 
   return (
@@ -64,7 +93,14 @@ const Reserve = ({ setOpenReserveSlider, hotelId }) => {
                       return (
                         <div key={rNumberItem?._id} className={styles.roomNumberConatiner}>
                           <label className={styles.roomNumber}>{rNumberItem?.number}</label>
-                          <input className="roomCheckBox" type="checkbox" value={rNumberItem?._id} onChange={handleCheck} />
+                          <input className="roomCheckBox"
+                            type="checkbox"
+                            value={rNumberItem?._id}
+                            onChange={handleCheck}
+                            disabled={!isRoomAvailable(rNumberItem)}
+                            title={!isRoomAvailable(rNumberItem) && "This room is already booked"}
+                            style={{ cursor : !isRoomAvailable(rNumberItem) ? "not-allowed" : "pointer" }}
+                          />
                         </div>
                       )
                     })
@@ -75,7 +111,7 @@ const Reserve = ({ setOpenReserveSlider, hotelId }) => {
           })
         }
 
-        <button className={styles.roomReserveBtn}>  Reserve Now !  </button>
+        <button className={styles.roomReserveBtn} onClick={finalReserveBtnHandler} >  Reserve Now !  </button>
 
       </div>
     </div>

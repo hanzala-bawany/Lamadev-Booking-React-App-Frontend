@@ -19,7 +19,7 @@ const searchReducer = (state, action) => {
             return action.payLoad;
         case "reset_search":
             return initial_state;
-        default:
+        default:    
             return state;
 
     }
