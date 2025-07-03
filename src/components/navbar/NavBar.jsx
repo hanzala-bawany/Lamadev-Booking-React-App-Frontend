@@ -7,7 +7,9 @@ import { authContext } from '../../context/authContextApi'
 const NavBar = ({ type }) => {
 
     const { user } = useContext(authContext)
-
+    console.log(user , "login user data in navbar.jsx");
+    
+    
 
     return (
         <div id="navBarContainer">
@@ -23,7 +25,7 @@ const NavBar = ({ type }) => {
                             <h5 className="registerLine">Don't have an account ? <Link className='joinNowLink' to="/signUp">Join Now</Link> </h5>
                         </div> :
                         <> {
-                         user ? <h5 className='user_name'>{user?.data?.loginUser?._doc?.userName}</h5> :  <div className="navBtns">
+                         user ? <h5 className='user_name'>{user?.userName}</h5> :  <div className="navBtns">
                                 <Link className='navBarBtn' to="/signUp" > Register </Link>
 
                                 <Link className='navBarBtn' to="/login" >Login</Link>

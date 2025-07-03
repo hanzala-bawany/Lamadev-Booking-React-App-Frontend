@@ -30,13 +30,14 @@ const Login = () => {
 
     try {
       const res = await axios.post("http://localhost:8000/auth/login", { email, password })
-      dispatch({ type: "login_success", payLoad: res?.data })
+      console.log(res,  "login user res in login.jsx");
+      dispatch({ type: "login_success", payLoad: res?.data?.data?.loginUser?._doc })
       navigate("/")
       toast.success('Login Successful!');
     }
     catch (err) {
-      dispatch({ type: "login_failure", payLoad: err?.massage })
-      toast.error(err?.massage);
+      dispatch({ type: "login_failure", payLoad: err?.message })
+      toast.error(err?.message);
       console.log(err);
     }
   }
