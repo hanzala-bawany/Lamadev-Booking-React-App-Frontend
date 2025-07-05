@@ -29,7 +29,9 @@ const Login = () => {
     loading && toast.info('Please wait...');
 
     try {
-      const res = await axios.post("http://localhost:8000/auth/login", { email, password })
+      const res = await axios.post("http://localhost:8000/auth/login", { email, password } , {
+        withCredentials: true
+      })
       console.log(res,  "login user res in login.jsx");
       dispatch({ type: "login_success", payLoad: res?.data?.data?.loginUser?._doc })
       navigate("/")
