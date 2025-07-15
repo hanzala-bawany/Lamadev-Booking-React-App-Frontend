@@ -1,5 +1,5 @@
 import NavBar from '../../components/navbar/NavBar'
-import styles from './Login.module.css';
+import styles from './login.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
