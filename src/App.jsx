@@ -6,7 +6,7 @@ import Hotel from "./pages/hotel/Hotel"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Login from "./pages/login/Login"
-import SignUp from "./pages/signUp/signUp"
+import SignUp from "./pages/signUp/SignUp"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthRoute from "./route/AuthRoute"
