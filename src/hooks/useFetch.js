@@ -14,11 +14,12 @@ const useFetch = (url) => {
             
             setLoading(true)
             try {
-                const fetchData = await axios.get(url)
+                const fetchData = await axios.get(url ,  { withCredentials: true })
                 console.log(fetchData , "fetchData in useFetch");
 
                 setData(fetchData.data)
                 setLoading(false)
+                // localStorage.removeItem("loginUser")
             }
             catch (error) {
                 setError(error?.message)
@@ -32,7 +33,7 @@ const useFetch = (url) => {
     const reFetchData = async () => {
         setLoading(true)
         try {
-            const fetchData = await axios.get(url)
+            const fetchData = await axios.get(url ,  { withCredentials: true })
             setData(fetchData.data)
             setLoading(false)
         }
