@@ -46,7 +46,7 @@ const Hotel = () => {
 
   const { data, loading, error, reFetchData } = useFetch(`http://localhost:8000/hotel/${id}`)
   const dataByHotelId = data?.data
-  console.log(dataByHotelId);
+  console.log(dataByHotelId , "<--- htoekl data in hotel");
 
   const [openSlider, setOpenSlider] = useState(false)
   const [openReserveSlider, setOpenReserveSlider] = useState(false)
@@ -115,10 +115,10 @@ const Hotel = () => {
         <HotelHeader reserveBtnHandler={reserveBtnHandler} data={dataByHotelId} />
 
         <div className="hotelImgesConatiner">
-          {
-            dataByHotelId?.photos?.map((item, i) => (
+          { 
+            dataByHotelId?.photos?.map((item, i) => (  
               <div onClick={() => sliderHandler(i)} key={dataByHotelId?.photos?.[i]} className="hotelImgeItem">
-                <img src={item?.imgUrl} alt="hotel room img" />
+                <img src={item} alt="hotel room img" />
               </div>
             ))
           }

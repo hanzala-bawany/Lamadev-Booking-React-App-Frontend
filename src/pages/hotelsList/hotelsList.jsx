@@ -43,77 +43,76 @@ const HotelsList = () => {
         <div className="hotelsList">
 
           {/* section 1  */}
-          <div className="hotelListSearch">
+            <div className="hotelListSearch">
 
-            <h1 className="searchTitle">Search</h1>
+              <h1 className="searchTitle">Search</h1>
 
-            <div className="destination">
-              <p className="destinationHeading">Destination</p>
-              <input type="text" onChange={(e) => setDestination(e.target.value)} placeholder={destination} />
-            </div>
-
-            <div className="checkInDate">
-              <p className="checkInDateHeading">Check-in date</p>
-              <span onClick={() => setOpenDate(!openDate)} className="newDate">
-                {format(date[0].startDate, "MM/dd/yyyy")} to  {format(date[0].endDate, "MM/dd/yyyy")}
-              </span>
-              {
-                openDate && <DateRange
-                  editableDateInputs={true}
-                  onChange={(item) => setDate([item.selection])}
-                  moveRangeOnFirstSelection={false}
-                  ranges={date}
-                  minDate={new Date()}
-                />
-              }
-            </div>
-
-            <div className="optionItemsConatiner">
-
-              <div>Options</div>
-
-              <div className="optionItems">
-                <div className="optionItem">
-                  <span className="optionItemText"> Min Price (per night) </span>
-                  <input type="text" placeholder='min' onChange={(e) => setMin(e.target.value)} />
-                </div>
-
-                <div className="optionItem">
-                  <span className="optionItemText"> Max Price (per night) </span>
-                  <input type="text" placeholder='max' onChange={(e) => setMax(e.target.value)} />
-                </div>
-
-                <div className="optionItem">
-                  <span className="optionItemText"> Adult </span>
-                  <input min="1"
-                    onChange={(e) => setOption({ ...option, adult: Math.round(Number(e.target.value)) })}
-                    placeholder={option.adult} type="number" 
-                    />
-                </div>
-
-                <div className="optionItem">
-                  <span className="optionItemText"> Children </span>
-                  <input min="0"
-                    onChange={(e) => setOption({ ...option, children: Math.round(Number(e.target.value)) })}
-                    placeholder={option.children} type="number" 
-                    />
-                </div>
-
-                <div className="optionItem">
-                  <span className="optionItemText"> Room </span>
-                  <input min="1"
-                    onChange={(e) => setOption({ ...option, room: Math.round(Number(e.target.value)) })}
-                    placeholder={option.room} type="number" 
-                    />
-                </div>
+              <div className="destination">
+                <p className="destinationHeading">Destination</p>
+                <input type="text" onChange={(e) => setDestination(e.target.value)} placeholder={destination} />
               </div>
 
+              <div className="checkInDate">
+                <p className="checkInDateHeading">Check-in date</p>
+                <span onClick={() => setOpenDate(!openDate)} className="newDate">
+                  {format(date[0].startDate, "MM/dd/yyyy")} to  {format(date[0].endDate, "MM/dd/yyyy")}
+                </span>
+                {
+                  openDate && <DateRange
+                    editableDateInputs={true}
+                    onChange={(item) => setDate([item.selection])}
+                    moveRangeOnFirstSelection={false}
+                    ranges={date}
+                    minDate={new Date()}
+                  />
+                }
+              </div>
+
+              <div className="optionItemsConatiner">
+
+                <div>Options</div>
+
+                <div className="optionItems">
+                  <div className="optionItem">
+                    <span className="optionItemText"> Min Price (per night) </span>
+                    <input type="text" placeholder='min' onChange={(e) => setMin(e.target.value)} />
+                  </div>
+
+                  <div className="optionItem">
+                    <span className="optionItemText"> Max Price (per night) </span>
+                    <input type="text" placeholder='max' onChange={(e) => setMax(e.target.value)} />
+                  </div>
+
+                  <div className="optionItem">
+                    <span className="optionItemText"> Adult </span>
+                    <input min="1"
+                      onChange={(e) => setOption({ ...option, adult: Math.round(Number(e.target.value)) })}
+                      placeholder={option.adult} type="number"
+                    />
+                  </div>
+
+                  <div className="optionItem">
+                    <span className="optionItemText"> Children </span>
+                    <input min="0"
+                      onChange={(e) => setOption({ ...option, children: Math.round(Number(e.target.value)) })}
+                      placeholder={option.children} type="number"
+                    />
+                  </div>
+
+                  <div className="optionItem">
+                    <span className="optionItemText"> Room </span>
+                    <input min="1"
+                      onChange={(e) => setOption({ ...option, room: Math.round(Number(e.target.value)) })}
+                      placeholder={option.room} type="number"
+                    />
+                  </div>
+                </div>
+
+              </div>
+
+              <button onClick={searchListHandler} className="seachListBtn">Search</button>
+
             </div>
-
-            <button onClick={searchListHandler} className="seachListBtn">Search</button>
-
-          </div>
-
 
           {/* section 2 */}
           <div className="hotelListResult">

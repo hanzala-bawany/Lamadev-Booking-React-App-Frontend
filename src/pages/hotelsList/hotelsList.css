@@ -18,17 +18,18 @@
 }
 
 /* section 1 */
+
 .hotelListSearch{
     padding: 15px 10px;
     background-color: #febb02;
-    flex: 1;
     display: flex;
     flex-direction: column;
     row-gap: 15px;
     border-radius: 8px;
     height: fit-content;
-    position: sticky;
-    top: 5px;
+    position: sticky ;
+    top: 5px ;   
+    flex: 1;
 }
 
 .destination>input{
